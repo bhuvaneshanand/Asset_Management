@@ -1,0 +1,113 @@
+.footer {
+  width: 100%;
+  background-color: #60a5fa; /* Footer background */
+  padding: 0.5rem;
+  position: relative; /* Relative positioning */
+  z-index: 1000;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+#root {
+    flex: 1; /* Allow root content to grow and push footer down */
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+.header {
+  width: 100%;
+  background-color: #60a5fa;
+  padding: 0.5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050; /* Ensures the header is above other elements */
+}
+.nav-link-custom {
+  transition: background-color 0.3s ease; /* Smooth background transition on hover */
+}
+  
+.nav-link-custom:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Slight background change on hover */
+}
+
+.brand-name {
+  font-family: 'Roboto', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: #fff;
+}
+  
+.navbar-dark .navbar-nav .nav-link-custom {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.4rem;
+  color: #fff;
+}
+  
+.navbar-dark .navbar-nav .nav-link-custom:hover {
+  color: #ccc;
+}
+
+  .navbar-brand {
+    display: flex;
+  align-items: center;
+    padding-left: 60px;
+  }
+  .navbar-toggler {
+    margin-right: 60px;
+  }
+  
+  .brand-name {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: #fff;
+    line-height: 1; 
+  }
+  
+  .navbar-brand img {
+    vertical-align: middle; 
+    height: 80px; /* Ensure the height matches your logo size */
+    width: auto;  /* Maintain the aspect ratio */
+    display: inline-block;
+  }
+  .custom-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1050;
+  }
+.navbar .container-fluid {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.user-dropdown {
+  padding-right: 80px; 
+}
+
+/* Optionally, you can adjust the size or alignment of the icon */
+.user-dropdown .fa-user-circle {
+  vertical-align: middle; 
+}
+.content-wrapper {
+  margin-top: 60px; /* Adjust to match the header height */
+  flex: 1; /* Allow content to expand and push the footer down */
+}
+
+.breadcrumb-custom .breadcrumb-item-custom {
+  color: white; /* Default color */
+  text-decoration: none;
+}
+
+.breadcrumb-custom .breadcrumb-item-custom.active {
+  color: #eef0f5; /* Blue color when active */
+  font-weight: bold;
+}
+
+.breadcrumb-custom .breadcrumb-item-custom:hover {
+  color: #f4f5fa; /* Optional: blue color on hover */
+}
+
+  
+  
