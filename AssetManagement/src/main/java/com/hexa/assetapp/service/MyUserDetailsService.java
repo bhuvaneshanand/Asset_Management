@@ -21,15 +21,12 @@ public class MyUserDetailsService implements UserDetailsService{
 	
 	@Override
     public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
-        User userInfo = userRepository.findByUsername(usernameOrEmail);
+        User userInfo = userRepository.findByUsernameOrEmail(usernameOrEmail, usernameOrEmail);
         
-        if (userInfo == null) {
-        	userInfo = userRepository.findByEmail(usernameOrEmail);
         	if (userInfo == null) {
         		throw new UsernameNotFoundException("User not found with username or email: " + usernameOrEmail);
         	}
-        }
-
+        
         String roleName ="ROLE_"+userInfo.getRole().name(); 
 
         return new org.springframework.security.core.userdetails.User(

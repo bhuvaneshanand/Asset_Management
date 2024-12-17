@@ -49,7 +49,10 @@ public class AuthController {
 
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
         final String jwt = jwtUtil.generateToken(userDetails.getUsername());
-        User user = userRepository.getUserByUsername(authenticationRequest.getUsername());
+        User user = userRepository.findByUsernameOrEmail(authenticationRequest.getUsername(), authenticationRequest.getUsername());
+        if (user == null) {
+            throw new Exception("User not found with username or email: " + authenticationRequest.getUsername());
+        }
         Map<String, String> response = new HashMap<>();
         response.put("token", jwt);
         response.put("username", userDetails.getUsername());

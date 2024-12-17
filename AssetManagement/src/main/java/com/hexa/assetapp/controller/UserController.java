@@ -3,7 +3,6 @@ package com.hexa.assetapp.controller;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,7 +13,6 @@ import com.hexa.assetapp.dto.EmployeeDTO;
 import com.hexa.assetapp.dto.EmployeeUserDTO;
 import com.hexa.assetapp.dto.UserDTO;
 import com.hexa.assetapp.entities.Employee;
-import com.hexa.assetapp.repository.UserRepository;
 import com.hexa.assetapp.service.EmployeeServiceImpl;
 
 import jakarta.validation.Valid;
@@ -23,13 +21,7 @@ import jakarta.validation.Valid;
 @RequestMapping("/api/v1/assetapp/auth")
 @CrossOrigin("*")
 public class UserController {
-	
-	@Autowired
-	private UserRepository userRepository;
-	
-	@Autowired
-	private PasswordEncoder passwordEncoder;
- 
+
 	@Autowired
 	private EmployeeServiceImpl employeeServiceImpl;
 
