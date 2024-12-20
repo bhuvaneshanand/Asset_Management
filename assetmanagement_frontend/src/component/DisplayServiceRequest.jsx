@@ -3,19 +3,19 @@ import { Link } from 'react-router-dom';
 import ServiceRequestService from '../services/ServiceRequestService';
 import { useAuth } from '../context/useAuth';
 import { Sidenav } from './Sidenav';
- 
+
 const DisplayServiceRequests = () => {
     const [serviceRequests, setServiceRequests] = useState([]);
     const { auth } = useAuth();
     const token = auth.token;
     const [error, setError] = useState("");
     const errorRef = useRef();
- 
+
     // Pagination state
     const [currentPage, setCurrentPage] = useState(1);
     const [serviceRequestsPerPage] = useState(5); // Show 5 service requests per page (can be customized)
     const totalPages = Math.ceil(serviceRequests.length / serviceRequestsPerPage);
- 
+
     // Fetch all service requests
     useEffect(() => {
         ServiceRequestService.findAllServiceRequest(token)
@@ -28,7 +28,7 @@ const DisplayServiceRequests = () => {
                 setError("Error fetching service requests");
             });
     }, [token]);
- 
+
     // Handle service request deletion
     const handleDelete = (id) => {
         ServiceRequestService.deleteServiceRequestById(id, token)
@@ -49,21 +49,21 @@ const DisplayServiceRequests = () => {
                 }
             });
     };
- 
+
     // Get paginated data
     const getPaginatedData = () => {
         const startIndex = (currentPage - 1) * serviceRequestsPerPage;
         const endIndex = startIndex + serviceRequestsPerPage;
         return serviceRequests.slice(startIndex, endIndex);
     };
- 
+
     // Handle page change
     const handlePageChange = (pageNumber) => {
         if (pageNumber >= 1 && pageNumber <= totalPages) {
             setCurrentPage(pageNumber);
         }
     };
- 
+
     return (
         <div className="d-flex">
             <Sidenav />
@@ -71,7 +71,7 @@ const DisplayServiceRequests = () => {
                 <div className="container">
                     <h2 className="text-center">Service Requests</h2>
                     <p ref={errorRef} className={error ? 'errmsg' : 'offscreen'} aria-live='assertive'>{error}</p>
-                    
+
                     <table className="table table-bordered table-striped">
                         <thead className="thead-dark">
                             <tr>
@@ -111,26 +111,26 @@ const DisplayServiceRequests = () => {
                             )}
                         </tbody>
                     </table>
-                    
+
                     {/* Pagination Controls */}
                     <div className="d-flex justify-content-center mt-3">
                         <button
                             className="btn btn-primary me-2"
                             onClick={() => handlePageChange(1)}
                             disabled={currentPage === 1}>First</button>
-                        
+
                         <button
                             className="btn btn-primary me-2"
                             onClick={() => handlePageChange(currentPage - 1)}
                             disabled={currentPage === 1}>Prev</button>
-                        
+
                         <span className="align-self-center">Page {currentPage} of {totalPages}</span>
-                        
+
                         <button
                             className="btn btn-primary ms-2"
                             onClick={() => handlePageChange(currentPage + 1)}
                             disabled={currentPage === totalPages}>Next</button>
-                        
+
                         <button
                             className="btn btn-primary ms-2"
                             onClick={() => handlePageChange(totalPages)}
@@ -141,5 +141,5 @@ const DisplayServiceRequests = () => {
         </div>
     );
 };
- 
+
 export default DisplayServiceRequests;

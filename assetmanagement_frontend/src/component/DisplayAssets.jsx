@@ -219,7 +219,7 @@ const DisplayAssets = () => {
                   <td colSpan="9" className="text-center">No assets available.</td>
                 </tr>
               ) : (
-                filteredAssets.map(asset => (
+                currentAssets.map(asset => (
                   <tr key={asset.assetID}>
                     <td>{asset.assetID}</td>
                     <td>{<img src={asset.imgUrl} alt='No Images' style={{ width: "200px", height: "150px" }} />}</td>

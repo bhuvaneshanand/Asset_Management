@@ -12,6 +12,7 @@ const EmployeeManagement = () => {
     const token = auth.token;
     const [error, setError] = React.useState("")
     const errorRef = useRef()
+    
     useEffect(() => {
         const fetchEmployees = async () => {
             try {
